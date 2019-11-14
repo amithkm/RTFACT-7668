@@ -1,15 +1,24 @@
 #TODO: set version in var
-ART_VERSION=6.9.5
+ART_VERSION=6.6.10
+CONTAINER_NAME=RTFACT-7668_$ART_VERSION
+echo pulling...
 docker pull docker.bintray.io/jfrog/artifactory-pro:$ART_VERSION
-docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-pro:$ART_VERSION
+echo running...
+docker run --name $CONTAINER_NAME -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-pro:$ART_VERSION
 
 # TODO: Get docker container id
-# docker cp ./from-npm/ $CONTAINER_ID:/from-npm
+echo copying...
+docker cp ./from-npm/ $CONTAINER_NAME:/from-npm
 
-echo set up docker license, and run `docker cp ./from-npm/ CONTAINER_ID:/from-npm`
-echo then upload files from 'from-npm' folder to Artifactory, first the unscoped module and then the types scoped module.
-echo then run...
-echo cd my-project
-echo npm i
+echo
+echo Completed! Now follow these manual steps:
+echo - browse to http://localhost:8081/artifactory and:
+echo   - set up docker license 
+echo   - go to 'Admin > Import/Export > Import'
+echo   - browse to files and select '/from-npm/no-namespace' 
+echo   - do the same for '/from-npm/types-namespace'
+echo - in the host:
+echo   - cd my-project
+echo   - npm i
 
 # try with cache clean --force?
