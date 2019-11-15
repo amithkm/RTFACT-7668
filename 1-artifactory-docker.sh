@@ -1,5 +1,5 @@
 #TODO: set version in var
-ART_VERSION=6.6.10
+ART_VERSION=6.9.5
 CONTAINER_NAME=RTFACT-7668_$ART_VERSION
 echo pulling...
 docker pull docker.bintray.io/jfrog/artifactory-pro:$ART_VERSION
@@ -13,6 +13,7 @@ docker cp ./from-npm/ $CONTAINER_NAME:/from-npm
 echo
 echo Completed! Now follow these manual steps:
 echo - browse to http://localhost:8081/artifactory and:
+echo   - if you get an Apache Tomcat 404, run "docker restart $CONTAINER_NAME"
 echo   - set up docker license 
 echo   - go to 'Admin > Import/Export > Import'
 echo   - browse to files and select '/from-npm/no-namespace' 
