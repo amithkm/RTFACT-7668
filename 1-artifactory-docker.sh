@@ -1,4 +1,3 @@
-#TODO: set version in var
 ART_VERSION=6.9.5
 CONTAINER_NAME=RTFACT-7668_$ART_VERSION
 echo pulling...
