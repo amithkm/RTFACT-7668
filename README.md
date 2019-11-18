@@ -6,7 +6,7 @@ Steps to recreate [RTFACT-7668](https://www.jfrog.com/jira/browse/RTFACT-20509)
 
 1. Run `./1-artifactory-docker.sh`. This will set up a new 6.9.5 instance. And copy some required binaries to it
 
-2. setup wizard
+2. Complete the setup wizard for npm
     - browse to http://localhost:8081/artifactory and:
         - if you get an Apache Tomcat 404, run "docker restart $CONTAINER_NAME"
         - register with an Artifactory license
@@ -16,13 +16,13 @@ Steps to recreate [RTFACT-7668](https://www.jfrog.com/jira/browse/RTFACT-20509)
     - go to 'Admin > Import/Export > Repositories > Import'
     - select 'npm-local' under Import Repository from Path
     - browse to files and import the following, one at a time, waiting for npm index to complete between each step (can take 3 minutes, watch log)
-        - /from-npm/no-namespace/1.0.0
-        - /from-npm/no-namespace/1.1.0
-        - /from-npm/types-namespace/@types
-        - /from-npm/types-namespace
-    - Under artifats browser, right click + delete eslint-visitor-keys@1.0.0 from root (not types)
+        - `/from-npm/no-namespace/1.0.0`
+        - `/from-npm/no-namespace/1.1.0`
+        - `/from-npm/types-namespace/@types`
+        - `/from-npm/types-namespace`
+    - Under artifacts browser, right click + delete eslint-visitor-keys@1.0.0 from root (not types)
         - http://localhost:8081/artifactory/webapp/#/artifacts/browse/tree/General/npm-local/eslint-visitor-keys-1.0.0.tgz
-    - back in admin import, reimport /from-npm/no-namespace/1.0.0
+    - Go back to 'Admin > Import/Export > Repositories > Import', reimport `/from-npm/no-namespace/1.0.0`
 
 4. Replicate issue in the host
     - in the host:
