@@ -8,7 +8,7 @@ docker run --name $CONTAINER_NAME -d -p 8081:8081 docker.bintray.io/jfrog/artifa
 
 # TODO: Get docker container id
 echo copying...
-docker cp ./from-npm/ $CONTAINER_NAME:/from-npm
+docker cp ./from-npm/ $CONTAINER_NAME:/
 
 echo
 echo Completed! Now follow these manual steps:
