@@ -11,7 +11,7 @@ cd 1.1.0
 curl https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-1.1.0.tgz -o eslint-visitor-keys-1.1.0.tgz
 cd ../..
 mkdir types-namespace && cd types-namespace
-mkdir types
-cd types
+mkdir @types
+cd @types
 curl https://registry.npmjs.org/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz -o eslint-visitor-keys-1.0.0.tgz
 

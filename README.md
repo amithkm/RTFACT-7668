@@ -18,8 +18,8 @@ Steps to recreate [RTFACT-7668](https://www.jfrog.com/jira/browse/RTFACT-20509)
     - browse to files and import the following, one at a time, waiting for npm index to complete between each step (can take 3 minutes, watch log)
         - /from-npm/no-namespace/1.0.0
         - /from-npm/no-namespace/1.1.0
-        - /from-npm/types/@types
-        - /from-npm/types
+        - /from-npm/types-namespace/@types
+        - /from-npm/types-namespace
     - Under artifats browser, right click + delete eslint-visitor-keys@1.0.0 from root (not types)
         - http://localhost:8081/artifactory/webapp/#/artifacts/browse/tree/General/npm-local/eslint-visitor-keys-1.0.0.tgz
     - back in admin import, reimport /from-npm/no-namespace/1.0.0
