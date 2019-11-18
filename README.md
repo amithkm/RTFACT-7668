@@ -1,6 +1,6 @@
-# Artifactory issue
+# Artifactory issue - npm integrity checksum failed
 
-Steps to recreate [RTFACT-7668](https://www.jfrog.com/jira/browse/RTFACT-20509)
+Steps to recreate [RTFACT-7668](https://www.jfrog.com/jira/browse/RTFACT-20509).
 
 ## Steps
 
