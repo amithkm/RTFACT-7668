@@ -13,6 +13,10 @@ Steps to recreate [RTFACT-7668](https://www.jfrog.com/jira/browse/RTFACT-20509).
         - use wizard to create npm repository (should end up with one called npm-local)
 
 3. Import
+
+Use one of the following approaches to upload:
+
+### 3.1 Using 'Import Repositories'
     - go to 'Admin > Import/Export > Repositories > Import'
     - select 'npm-local' under Import Repository from Path
     - browse to files and import the following, one at a time, waiting for npm index to complete between each step (can take 3 minutes, watch log)
@@ -23,6 +27,25 @@ Steps to recreate [RTFACT-7668](https://www.jfrog.com/jira/browse/RTFACT-20509).
     - Under artifacts browser, right click + delete eslint-visitor-keys@1.0.0 from root (not types)
         - http://localhost:8081/artifactory/webapp/#/artifacts/browse/tree/General/npm-local/eslint-visitor-keys-1.0.0.tgz
     - Go back to 'Admin > Import/Export > Repositories > Import', reimport `/from-npm/no-namespace/1.0.0`
+
+### 3.2 Using 'Deploy'
+    - Go to 'Artifacts > Deploy'
+    - Select Target Repository: 'npm-local'
+    - Select Multi
+    - drag on `from-npm/no-namespace/1.0.0/eslint-visitor-keys-1.0.0.tgz`
+    - keep Target Path blank
+    - Click 'Deploy' button
+    - Right click npm-local and select Recalculate index
+    - Watch logs and wait for reindex to complete
+    - Do the above steps again for each of the following in turn, waiting for the reindex to complete each time:
+        - `from-npm/no-namespace/1.1.0/eslint-visitor-keys-1.1.0.tgz`
+        - `from-npm/types-namespace/1.0.0/eslint-visitor-keys-1.0.0.tgz` (keeping target blank)
+        - `from-npm/types-namespace/1.0.0/eslint-visitor-keys-1.0.0.tgz` (setting target to /@types)
+    - Under artifacts browser, right click + delete eslint-visitor-keys@1.0.0 from root (not types)
+        - http://localhost:8081/artifactory/webapp/#/artifacts/browse/tree/General/npm-local/eslint-visitor-keys-1.0.0.tgz
+    - Right click npm-local and select Recalculate index
+    - Watch logs and wait for reindex to complete
+    - Reupload `from-npm/no-namespace/1.0.0/eslint-visitor-keys-1.0.0.tgz` following the steps above (keeping target blank)
 
 4. Replicate issue in the host
     - in the host:
