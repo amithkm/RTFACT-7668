@@ -1,4 +1,4 @@
-ART_VERSION=6.9.5
+ART_VERSION=7.31.10
 CONTAINER_NAME=RTFACT-7668_$ART_VERSION
 echo pulling...
 docker pull docker.bintray.io/jfrog/artifactory-pro:$ART_VERSION
